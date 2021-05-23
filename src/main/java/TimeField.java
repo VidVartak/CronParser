@@ -19,22 +19,9 @@ public enum TimeField implements CronField {
         this.maxVal = maxVal;
         this.desc = desc;
     }
+
     public String parse(String expression) {
-        String output="";
-        output=output.concat(String.format("%1$-14s",desc));
-        if (expression.equals("*")){
-            output=output.concat(TimeFieldHelper.printAllValues(minVal, maxVal));
-        } else if (expression.contains("*/")){
-            output=output.concat(TimeFieldHelper.printIntervals(Integer.valueOf(expression.substring(2)), minVal, maxVal));
-        } else if (expression.contains(",")){
-            output=output.concat(TimeFieldHelper.printCSV(expression, minVal, maxVal, desc));
-        } else if (expression.contains("-")){
-            output=output.concat(TimeFieldHelper.printRange(expression, minVal, maxVal));
-        } else {
-            output=output.concat(TimeFieldHelper.printOneValue(expression, minVal, maxVal, desc));
-        }
-        output=output.concat("\n");
-        return output;
+        return TimeFieldHelper.parse(expression, minVal, maxVal, desc);
     }
 //"*/15 0 1,15 * 1-5 /usr/bin/find"
 

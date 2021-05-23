@@ -10,7 +10,8 @@ public class CronParser {
         StringBuilder output=new StringBuilder();
         String[] parts = input.split(" ");
         int partNumber=0;
-        for (TimeField tf:TimeField.values()){
+        CronField[] cf = CronFieldFactory.getCronFields("TimeField");
+        for (CronField tf:cf){
             output.append(tf.parse(parts[partNumber]));
             partNumber++;
         }
