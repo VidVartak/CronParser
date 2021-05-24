@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.HashMap;
 
 /**
  * Enum representing parts of the cron expression and
@@ -8,7 +9,7 @@ public enum TimeField implements CronField {
     HOUR(0, 23, "hour"),
     DAYOFMONTH(1, 31, "day of month"),
     MONTH(1, 12, "month"),
-    DAYOFWEEK(1, 7, "day of week");
+    DAYOFWEEK(0, 6, "day of week");
 
     private final int minVal;
     private final int maxVal;
